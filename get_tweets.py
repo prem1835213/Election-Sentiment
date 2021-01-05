@@ -18,7 +18,7 @@ class TwitterHarvester(object):
     """Create a new TwitterHarvester instance"""
     def __init__(self, consumer_key, consumer_secret,
                  access_token, access_token_secret,
-                 wait_on_rate_limit=False,
+                 wait_on_rate_limit=True,
                  wait_on_rate_limit_notify=False):
 
         self.auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
