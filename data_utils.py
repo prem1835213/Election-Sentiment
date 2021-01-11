@@ -1,5 +1,6 @@
 import re
 import string
+from nltk.corpus import stopwords
 
 #################################
 
@@ -15,4 +16,8 @@ def clean_text(text):
     text = text.replace('  ', ' ') # double space removal again for edge cases
     text = text.strip() # removes trailing and leading whitespaces
     text = text.lower() # converts to lower case
+    
+    stop_words = set(stopwords.words('english'))
+    text = [word for word in text.split() if not (word in stop_words)] # removes stopwords
+    
     return text
