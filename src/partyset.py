@@ -1,4 +1,4 @@
-import data_utils
+from utils import data_utils
 import os
 import re
 
