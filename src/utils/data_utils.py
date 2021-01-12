@@ -1,6 +1,8 @@
 import re
 import string
 import pandas as pd
+import nltk
+nltk.download('stopwords') # needed for first time run 
 from nltk.corpus import stopwords
 from nltk.stem.porter import *
 from collections import defaultdict
