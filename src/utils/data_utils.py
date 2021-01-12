@@ -72,8 +72,9 @@ def stemmed_text(full_text):
             if word in tweet:
                 docCount[word] += 1
     counts = [(wordCount[w], docCount[w], w) for w in wordCount]
-    counts.sort(reverse = True) # sort from most frequent to least frequent
     stem_counts = pd.DataFrame(data = counts, columns = ['term_count', 'doc_count', 'word'])
     stem_counts['idf'] = np.log((N + 1) / stem_counts['doc_count']) + 1
     stem_counts['tf_idf'] = stem_counts['term_count'] * stem_counts['idf']
+    
+    stem_counts = stem_counts.sort_values('tf_idf', ascending=False)
     return stem_counts, stemmed_tweets

@@ -2,7 +2,7 @@ import sys
 import os
 import re
 import json
-from utils import data_utils
+# from utils import data_utils
 ####################################
 
 class PartySet:
@@ -22,7 +22,8 @@ class PartySet:
             with open(file) as f:
                 for line in f:
                     tweet = json.loads(line)
-                    text = data_utils.clean_text(tweet['full_text'])
+                    text = tweet['full_text']
+#                     text = data_utils.clean_text(text)
                     yield(text)
     
     def get_all_text(self):
