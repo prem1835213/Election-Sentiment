@@ -8,7 +8,10 @@ import numpy as np
 import os
 import pandas as pd
 ########################################
-
+"""
+run this file by doing python feature_extraction.py <n> <path_to_democrat_data> <path_to_republican_data>
+for example: python feature_extraction.py 25 ../data/democrats ../data/republicans
+"""
 
 
 def bag_of_words_features(vocab, document):
