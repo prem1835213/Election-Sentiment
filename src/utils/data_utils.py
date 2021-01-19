@@ -132,6 +132,7 @@ def common_words(full_text):
 def bag_of_words_sentiment(tfidf_df):
     '''
     Processes the bag of words from TF-IDF with NLTK.Vader sentiment analysis.
+    Can also be used on common words dataframe from data_utils.common_words.
     
     Input: Dataframe of bag of words from each party's representitive. 
     Use data_utils.stemmed_text before applying this function.
