@@ -13,7 +13,7 @@ Run this script in the command line via the following:
 python dl_election_data.py <data_folder>
 
 For example:
-python dl_election_data.py ../data/election_data
+python dl_election_data.py ../data/election_data_2020
 
 """
 
