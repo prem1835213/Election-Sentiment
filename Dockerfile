@@ -4,4 +4,5 @@ USER root
 
 RUN pip install twarc \
     pip install tweepy \
-    pip install wordcloud
+    pip install wordcloud \
+    pip install -U seaborn
