@@ -76,7 +76,6 @@ if __name__ == '__main__':
     mu_1, sigma_1, n_1 = year1
     mu_2, sigma_2, n_2 = year2
     
-    print(n_1, n_2)
     
     z_diff = np.abs((mu_1 - mu_2) / np.sqrt(sigma_1**2 / n_1 + sigma_2**2/n_2))
     p_value = stats.norm.pdf(z_diff)
