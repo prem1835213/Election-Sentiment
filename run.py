@@ -8,7 +8,8 @@ import glob
 import datetime
 import matplotlib.pyplot as plt
 import seaborn as sns
-import sys 
+import sys
+from scipy import stats
 
 def get_date(tweet):
     return datetime.datetime.strptime(tweet['created_at'], '%a %b %d %X %z %Y').date()
@@ -21,6 +22,9 @@ if __name__ == '__main__':
     target = sys.argv[1]
     files = os.listdir(target)
     log_disc_lst = []
+    
+    stats_dic = {}
+    
     for file in files:
         if 'jsonl' not in file:
             pass
@@ -50,9 +54,16 @@ if __name__ == '__main__':
             log_disc = {}
             for date in disc_by_day:
                 log_disc[date] = np.log(disc_by_day[date] + 1)
-
-            mean_disc = np.array(list(log_disc.values())).mean()
-            print(file + "Mean Discussion Level:" + str(mean_disc) + '\n')
+                
+            disc_vals = np.array(list(log_disc.values()))
+            
+            mean_disc = disc_vals.mean()
+            n_disc = len(disc_vals)
+            std_disc = disc_vals.std()
+            
+            stats_dic[file] = [mean_disc, std_disc, n_disc]
+            
+            print(file + " Mean Discussion Level:" + str(mean_disc) + '\n')
             log_disc_lst.append(log_disc)
             plt.hist(log_disc.values())
             fig_title = file.replace('.jsonl', '')
@@ -60,8 +71,13 @@ if __name__ == '__main__':
             plt.savefig(os.path.join(target, fig_title))
             print("Histogram added to {target} folder".format(target=target))
             plt.clf()
-
-    for disc in log_disc_lst:
-        log_disc_lst[0]
-
+            
+    year1, year2 = stats_dic.values()
+    mu_1, sigma_1, n_1 = year1
+    mu_2, sigma_2, n_2 = year2
     
+    print(n_1, n_2)
+    
+    z_diff = np.abs((mu_1 - mu_2) / np.sqrt(sigma_1**2 / n_1 + sigma_2**2/n_2))
+    p_value = stats.norm.pdf(z_diff)
+    print("Distributions are different with p-value " + str(p_value))
