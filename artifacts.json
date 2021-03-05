@@ -1,4 +1,5 @@
 {
     "github-repository": "https://github.com/prem1835213/Election-Sentiment",
-    "dockerhub-repository": "https://hub.docker.com/repository/docker/prem1835213/election_sentiment"
+    "dockerhub-repository": "https://hub.docker.com/repository/docker/prem1835213/election_sentiment",
+    "project-repository": "https://github.com/prem1835213/Election-Sentiment/"
 }
